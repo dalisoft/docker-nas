@@ -23,7 +23,7 @@ services:
     restart: unless-stopped
   plex:
     image: linuxserver/plex:latest
-    container_name: plex
+    container_name: plex-media
     # devices:
     # - /dev/dri:/dev/dri
     volumes:
@@ -47,7 +47,7 @@ services:
     restart: unless-stopped
   homebridge:
     image: oznu/homebridge:latest
-    container_name: plex
+    container_name: homebridge
     volumes:
       - ./data/homebridge:/homebridge
     logging:
@@ -55,5 +55,13 @@ services:
       options:
         max-size: "10mb"
         max-file: "1"
+    network_mode: host
+    restart: unless-stopped
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale-tunnel
+    volumes:
+      - /var/lib:/var/lib
+      - /dev/net/tun:/dev/net/tun
     network_mode: host
     restart: unless-stopped
