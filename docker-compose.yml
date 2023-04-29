@@ -4,7 +4,7 @@ services:
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
-    env_file: ./env
+    env_file: ./.env
     ports:
       - 8100:3000
     network_mode: host
@@ -15,7 +15,7 @@ services:
     volumes:
       - ./data/qbittorrent/config:/config
       - ./data/shared/downloads:/downloads
-    env_file: ./env
+    env_file: ./.env
     environment:
       - PUID=1000
       - PGID=1000
@@ -31,7 +31,7 @@ services:
     volumes:
       - ./data/plex/config:/config
       - ./data/shared/downloads:/downloads
-    env_file: ./env
+    env_file: ./.env
     environment:
       - PUID=1000
       - PGID=1000
@@ -53,7 +53,7 @@ services:
     container_name: homebridge
     volumes:
       - ./data/homebridge:/homebridge
-    env_file: ./env
+    env_file: ./.env
     logging:
       driver: json-file
       options:
@@ -67,6 +67,6 @@ services:
     volumes:
       - /var/lib:/var/lib
       - /dev/net/tun:/dev/net/tun
-    env_file: ./env
+    env_file: ./.env
     network_mode: host
     restart: unless-stopped
