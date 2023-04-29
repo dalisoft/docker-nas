@@ -1,0 +1,59 @@
+version: '3.4'
+
+services:
+  speedtest:
+    image: openspeedtest/latest:latest
+    container_name: openspeedtest
+    ports:
+      - 8100:3000
+    network_mode: host
+    restart: unless-stopped
+  torrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    volumes:
+      - ./data/qbittorrent/config:/config
+      - ./data/shared/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 8080:8080
+    network_mode: host
+    restart: unless-stopped
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex
+    # devices:
+    # - /dev/dri:/dev/dri
+    volumes:
+      - ./data/plex/config:/config
+      - ./data/shared/downloads:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 32400:32400
+      - 1900:1900/udp
+      - 3005:3005
+      # - 5353:5353/udp
+      - 8324:8324
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+      - 32469:32469
+    network_mode: host
+    restart: unless-stopped
+  homebridge:
+    image: oznu/homebridge:latest
+    container_name: plex
+    volumes:
+      - ./data/homebridge:/homebridge
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    network_mode: host
+    restart: unless-stopped
