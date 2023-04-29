@@ -4,11 +4,12 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 
 ## Services included
 
-- OpenSpeedTest
-- qBittorrent
-- Plex
-- Homebridge (for bridge for local non Homekit devices)
-- Tailscale
+- [OpenSpeedTest](https://openspeedtest.com)
+- [qBittorrent](https://www.qbittorrent.org)
+- [Plex](https://www.plex.tv)
+- [Homebridge](https://homebridge.io)
+- [S3 Server](https://s3-server.readthedocs.io)
+- [tailscale](https://tailscale.com)
 
 ## Installation & Running
 

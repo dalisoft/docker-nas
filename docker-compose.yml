@@ -61,6 +61,12 @@ services:
         max-file: "1"
     network_mode: host
     restart: unless-stopped
+  s3:
+    image: scality/s3server:latest
+    container_name: s3-server
+    env_file: ./.env
+    network_mode: host
+    restart: unless-stopped
   tailscale:
     image: tailscale/tailscale:latest
     container_name: tailscale-tunnel
