@@ -19,7 +19,7 @@ services:
       - 8000:8000 # Reverse-tunneling
       - 9000:9000 # Portainer UI
       - 9443:9443 # Portainer UI (SSL)
-    network_mode:
+    networks:
       - nas-connect
     restart: unless-stopped
     sysctls:
