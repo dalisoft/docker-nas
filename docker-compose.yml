@@ -17,6 +17,8 @@ services:
       - 9443:9443
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   adghome:
     image: adguard/adguardhome:latest
     container_name: adghome
@@ -46,6 +48,8 @@ services:
       - 5443:5443/udp # DNSCrypt server
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
@@ -54,6 +58,8 @@ services:
       - 8100:3000
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   torrent:
     image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -68,6 +74,8 @@ services:
       - 8080:8080
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   plex:
     image: linuxserver/plex:latest
     container_name: plex-media
@@ -93,6 +101,8 @@ services:
       - 32469:32469
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   homebridge:
     image: oznu/homebridge:latest
     container_name: homebridge
@@ -106,6 +116,8 @@ services:
         max-file: "1"
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   s3:
     image: scality/s3server:latest
     container_name: s3-server
@@ -121,3 +133,5 @@ services:
     env_file: ./.env
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
