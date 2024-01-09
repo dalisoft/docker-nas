@@ -39,7 +39,7 @@ services:
         max-file: "1"
     ports:
       - 8581:8581 # Homebridge UI
-      - 5353:5353 # mDNS lookup
+      - 5353:5353/udp # mDNS lookup
     networks:
       - nas-connect
     restart: unless-stopped
