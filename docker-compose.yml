@@ -15,7 +15,7 @@ services:
         max-file: "1"
     ports:
       - 8000:8000 # Reverse-tunneling
-      - 9000:9000 # Portainer UI (SSL)
+      - 9000:9000 # Portainer UI
       - 9443:9443 # Portainer UI (SSL)
     # network_mode: host
     restart: unless-stopped
