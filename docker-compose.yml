@@ -17,7 +17,8 @@ services:
       - 8000:8000 # Reverse-tunneling
       - 9000:9000 # Portainer UI
       - 9443:9443 # Portainer UI (SSL)
-    # network_mode: host
+    networks:
+      - nas-connect
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -111,12 +112,18 @@ services:
     volumes:
       - ./data/homebridge:/homebridge
     env_file: ./.env
+    environment:
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
     logging:
       driver: json-file
       options:
         max-size: "10mb"
         max-file: "1"
-    network_mode: host
+    ports:
+      - 8581:8581 # Homebridge UI
+      - 5353:5353 # mDNS lookup
+    networks:
+      - nas-connect
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1

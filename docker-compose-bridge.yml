@@ -30,13 +30,21 @@ services:
     volumes:
       - ./data/homebridge:/homebridge
     env_file: ./.env
+    environment:
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
     logging:
       driver: json-file
       options:
         max-size: "10mb"
         max-file: "1"
-    network_mode: host
+    ports:
+      - 8581:8581 # Homebridge UI
+      - 5353:5353 # mDNS lookup
+    networks:
+      - nas-connect
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   adghome:
     image: adguard/adguardhome:latest
     container_name: adghome
