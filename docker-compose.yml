@@ -1,6 +1,49 @@
 version: '3.4'
 
 services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/portainer:/data
+    env_file: ./.env
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    network_mode: host
+    restart: unless-stopped
+  adghome:
+    image: adguard/adguardhome:latest
+    container_name: adghome
+    volumes:
+      - ./data/adghome/workdir:/opt/adguardhome/work
+      - ./data/adghome/confdir:/opt/adguardhome/conf
+    env_file: ./.env
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    ports:
+      - 53:53/tcp # plain DNS
+      - 53:53/udp # plain DNS
+      - 67:67/udp # DHCP server
+      - 68:68/udp # DHCP server
+      - 80:80/tcp # Admin panel UI
+      - 443:443/tcp # Admin panel UI (SSL)
+      - 443:443/udp # Admin panel UI (SSL)
+      - 3000:3000/tcp # DNS-over-HTTPS server
+      - 853:853/tcp # DNS-over-TLS server
+      - 784:784/udp # DNS-over-QUIC server
+      - 853:853/udp # DNS-over-QUIC server
+      - 8853:8853/udp # DNS-over-QUIC server
+      - 5443:5443/tcp # DNSCrypt server
+      - 5443:5443/udp # DNSCrypt server
+    network_mode: host
+    restart: unless-stopped
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
