@@ -14,8 +14,10 @@ services:
         max-size: "10mb"
         max-file: "1"
     ports:
-      - 9443:9443
-    network_mode: host
+      - 8000:8000 # Reverse-tunneling
+      - 9000:9000 # Portainer UI (SSL)
+      - 9443:9443 # Portainer UI (SSL)
+    # network_mode: host
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
