@@ -72,12 +72,8 @@ services:
       - 8853:8853/udp # DNS-over-QUIC server
       - 5443:5443/tcp # DNSCrypt server
       - 5443:5443/udp # DNSCrypt server
-    # network_mode: host
-    networks:
-      - nas-connect
+    network_mode: host
     restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
 
 networks:
   nas-connect:
