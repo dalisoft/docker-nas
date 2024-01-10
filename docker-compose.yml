@@ -38,11 +38,11 @@ services:
       - 53:53/tcp # plain DNS
       - 53:53/udp # plain DNS
       - 67:67/udp # DHCP server
-      - 68:68/udp # DHCP server
+      # - 68:68/udp # DHCP server
       - 80:80/tcp # Admin panel UI
       - 443:443/tcp # Admin panel UI (SSL)
       - 443:443/udp # Admin panel UI (SSL)
-      - 3000:3000/tcp # DNS-over-HTTPS server
+      - 3000:3000/tcp # Admin panel UI (SSL) OR DNS-over-HTTPS server
       - 853:853/tcp # DNS-over-TLS server
       - 784:784/udp # DNS-over-QUIC server
       - 853:853/udp # DNS-over-QUIC server
@@ -51,8 +51,6 @@ services:
       - 5443:5443/udp # DNSCrypt server
     network_mode: host
     restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
@@ -144,3 +142,7 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+
+networks:
+  nas-connect:
+    driver: bridge
