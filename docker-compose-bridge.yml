@@ -61,7 +61,7 @@ services:
       - 53:53/tcp # plain DNS
       - 53:53/udp # plain DNS
       - 67:67/udp # DHCP server
-      - 68:68/udp # DHCP server
+      # - 68:68/udp # DHCP server
       - 80:80/tcp # Admin panel UI
       - 443:443/tcp # Admin panel UI (SSL)
       - 443:443/udp # Admin panel UI (SSL)
