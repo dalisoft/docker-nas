@@ -72,7 +72,9 @@ services:
       - 8853:8853/udp # DNS-over-QUIC server
       - 5443:5443/tcp # DNSCrypt server
       - 5443:5443/udp # DNSCrypt server
-    network_mode: host
+    # network_mode: host
+    networks:
+      - nas-connect
     restart: unless-stopped
 
 networks:
