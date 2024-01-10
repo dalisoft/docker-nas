@@ -65,7 +65,7 @@ services:
       - 80:80/tcp # Admin panel UI
       - 443:443/tcp # Admin panel UI (SSL)
       - 443:443/udp # Admin panel UI (SSL)
-      - 3000:3000/tcp # DNS-over-HTTPS server
+      - 3000:3000/tcp # Admin panel UI (SSL) OR DNS-over-HTTPS server
       - 853:853/tcp # DNS-over-TLS server
       - 784:784/udp # DNS-over-QUIC server
       - 853:853/udp # DNS-over-QUIC server
