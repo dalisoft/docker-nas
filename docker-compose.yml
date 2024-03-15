@@ -61,49 +61,6 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
-  torrent:
-    image: linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    volumes:
-      - ./data/qbittorrent/config:/config
-      - ./data/shared/downloads:/downloads
-    env_file: ./.env
-    environment:
-      - PUID=1000
-      - PGID=1000
-    ports:
-      - 8080:8080
-    network_mode: host
-    restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
-  plex:
-    image: linuxserver/plex:latest
-    container_name: plex-media
-    # devices:
-    # - /dev/dri:/dev/dri
-    volumes:
-      - ./data/plex/config:/config
-      - ./data/shared/downloads:/downloads
-    env_file: ./.env
-    environment:
-      - PUID=1000
-      - PGID=1000
-    ports:
-      - 32400:32400
-      - 1900:1900/udp
-      - 3005:3005
-      # - 5353:5353/udp
-      - 8324:8324
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
-      - 32469:32469
-    network_mode: host
-    restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
   homebridge:
     image: oznu/homebridge:latest
     container_name: homebridge
@@ -125,12 +82,92 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
-  s3:
-    image: scality/s3server:latest
-    container_name: s3-server
+  torrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    volumes:
+      - ./data/qbittorrent/config:/config
+      - ./data/shared/downloads:/downloads
     env_file: ./.env
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
     network_mode: host
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+  plex:
+    image: linuxserver/plex:latest
+    container_name: plex-media
+    # devices:
+    # - /dev/dri:/dev/dri
+    volumes:
+      - ./data/plex/config:/config
+      - ./data/plex/profiles:/config/profiles
+      - ./data/shared/downloads:/downloads
+    env_file: ./.env
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 32400:32400
+      - 1900:1900/udp
+      - 3005:3005
+      # - 5353:5353/udp
+      - 8324:8324
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+      - 32469:32469
+    network_mode: host
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr-media
+    # devices:
+    # - /dev/dri:/dev/dri
+    volumes:
+      - ./data/sonarr/config:/config
+      - ./data/shared/serials:/tv
+      - ./data/shared/downloads:/downloads
+    env_file: ./.env
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 8989:8989
+    network_mode: host
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr-media
+    # devices:
+    # - /dev/dri:/dev/dri
+    volumes:
+      - ./data/radarr/config:/config
+      - ./data/shared/movies:/movies
+      - ./data/shared/downloads:/downloads
+    env_file: ./.env
+    environment:
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - 7878:7878
+    network_mode: host
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   tailscale:
     image: tailscale/tailscale:latest
     container_name: tailscale-tunnel
@@ -142,6 +179,12 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+  s3:
+    image: scality/s3server:latest
+    container_name: s3-server
+    env_file: ./.env
+    network_mode: host
+    restart: unless-stopped
 
 networks:
   nas-connect:
