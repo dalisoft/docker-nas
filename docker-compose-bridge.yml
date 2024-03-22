@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   portainer:
-    image: portainer/portainer-ce:latest
+    image: lscr.io/portainer/portainer-ce:latest
     container_name: portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -23,7 +23,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   homebridge:
-    image: oznu/homebridge:latest
+    image: lscr.io/oznu/homebridge:latest
     container_name: homebridge
     volumes:
       - ./data/homebridge:/homebridge
@@ -44,7 +44,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   adghome:
-    image: adguard/adguardhome:latest
+    image: lscr.io/adguard/adguardhome:latest
     container_name: adghome
     volumes:
       - ./data/adghome/workdir:/opt/adguardhome/work
