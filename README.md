@@ -16,8 +16,11 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 - [Plex](https://www.plex.tv)
 - [Sonarr](https://sonarr.tv)
 - [Radarr](https://radarr.video)
+- [Overseerr](https://overseerr.dev)
+- [Jackett](https://github.com/Jackett/Jackett)
+- [TAUTULLI](https://tautulli.com)
 - [Tailscale](https://tailscale.com)
-- [S3 Server](https://s3-server.readthedocs.io)
+- [Zenko CloudServer](https://github.com/scality/cloudserver)
 
 ## Installation & Running
 
