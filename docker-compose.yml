@@ -55,8 +55,6 @@ services:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
     env_file: ./.env
-    environment:
-      - TZ=Asia/Samarkand
     ports:
       - 8100:3000
     network_mode: service:adghome
@@ -70,7 +68,6 @@ services:
       - ./data/homebridge:/homebridge
     env_file: ./.env
     environment:
-      - TZ=Asia/Samarkand
       - HOMEBRIDGE_CONFIG_UI_PORT=8581
     logging:
       driver: json-file
