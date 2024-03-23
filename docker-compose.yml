@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   portainer:
-    image: lscr.io/portainer/portainer-ce:latest
+    image: portainer/portainer-ce:latest
     container_name: portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -25,7 +25,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   adghome:
-    image: lscr.io/adguard/adguardhome:latest
+    image: adguard/adguardhome:latest
     container_name: adghome
     volumes:
       - ./data/adghome/workdir:/opt/adguardhome/work
@@ -161,7 +161,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   radarr:
-    image: lscr.io/lscr.io/linuxserver/radarr:latest
+    image: lscr.io/linuxserver/radarr:latest
     container_name: radarr-media
     # devices:
     # - /dev/dri:/dev/dri
@@ -202,7 +202,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   tailscale:
-    image: lscr.io/tailscale/tailscale:latest
+    image: tailscale/tailscale:latest
     container_name: tailscale-tunnel
     volumes:
       - /var/lib:/var/lib
