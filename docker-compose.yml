@@ -187,7 +187,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   s3:
-    image: lscr.io/scality/s3server:latest
+    image: scality/s3server:latest
     container_name: s3-server
     env_file: ./.env
     network_mode: service:adghome
