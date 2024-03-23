@@ -52,7 +52,7 @@ services:
     network_mode: host
     restart: unless-stopped
   speedtest:
-    image: lscr.io/openspeedtest/latest:latest
+    image: openspeedtest/latest:latest
     container_name: openspeedtest
     env_file: ./.env
     environment:
