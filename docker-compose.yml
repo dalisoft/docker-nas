@@ -227,10 +227,14 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
-  s3:
-    image: scality/s3server:latest
-    container_name: s3-server
+  cloud_s3:
+    image: zenko/cloudserver:latest
+    container_name: cloud_s3-server
     env_file: ./.env
+    environment:
+      - REMOTE_MANAGEMENT_DISABLE=1
+    ports:
+      - 8001:8000
     networks:
       - nas-connect
     restart: unless-stopped
