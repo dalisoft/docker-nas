@@ -17,8 +17,7 @@ services:
       - 8000:8000 # Reverse-tunneling
       - 9000:9000 # Portainer UI
       - 9443:9443 # Portainer UI (SSL)
-    networks:
-      - nas-connect
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -49,7 +48,8 @@ services:
       - 8853:8853/udp # DNS-over-QUIC server
       - 5443:5443/tcp # DNSCrypt server
       - 5443:5443/udp # DNSCrypt server
-    network_mode: host
+    networks:
+      - nas-connect
     restart: unless-stopped
   speedtest:
     image: openspeedtest/latest:latest
@@ -59,7 +59,7 @@ services:
       - TZ=Asia/Samarkand
     ports:
       - 8100:3000
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -80,8 +80,7 @@ services:
     ports:
       - 8581:8581 # Homebridge UI
       - 5353:5353/udp # mDNS lookup
-    networks:
-      - nas-connect
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -99,7 +98,7 @@ services:
       - 8080:8080
       - 6881:6881
       - 6881:6881/udp
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -124,7 +123,7 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
       - 32469:32469
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -140,7 +139,7 @@ services:
     env_file: ./.env
     ports:
       - 8989:8989
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -156,7 +155,7 @@ services:
     env_file: ./.env
     ports:
       - 7878:7878
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -171,7 +170,7 @@ services:
     env_file: ./.env
     ports:
       - 9117:9117
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
