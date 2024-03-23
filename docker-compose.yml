@@ -156,6 +156,40 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr-media
+    # devices:
+    # - /dev/dri:/dev/dri
+    volumes:
+      - ./data/overseerr/config:/config
+      - ./data/shared/movies:/movies
+      - ./data/shared/downloads:/downloads
+    env_file: ./.env
+    environment:
+      - PORT=5055
+    ports:
+      - 5055:5055
+    network_mode: service:adghome
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli-media
+    # devices:
+    # - /dev/dri:/dev/dri
+    volumes:
+      - ./data/tautulli/config:/config
+      - ./data/shared/movies:/movies
+      - ./data/shared/downloads:/downloads
+    env_file: ./.env
+    ports:
+      - 8181:8181
+    network_mode: service:adghome
+    restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   jackett:
     image: lscr.io/linuxserver/jackett:latest
     container_name: jackett
