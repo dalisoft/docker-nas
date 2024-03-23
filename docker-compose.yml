@@ -182,9 +182,7 @@ services:
       - /var/lib:/var/lib
       - /dev/net/tun:/dev/net/tun
     env_file: ./.env
-    environment:
-      - TZ=Asia/Samarkand
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
@@ -192,9 +190,7 @@ services:
     image: lscr.io/scality/s3server:latest
     container_name: s3-server
     env_file: ./.env
-    environment:
-      - TZ=Asia/Samarkand
-    network_mode: host
+    network_mode: service:adghome
     restart: unless-stopped
 
 networks:
