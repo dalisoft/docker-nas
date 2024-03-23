@@ -8,8 +8,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data/portainer:/data
     env_file: ./.env
-    environment:
-      - TZ=Asia/Samarkand
     logging:
       driver: json-file
       options:
@@ -31,8 +29,6 @@ services:
       - ./data/adghome/workdir:/opt/adguardhome/work
       - ./data/adghome/confdir:/opt/adguardhome/conf
     env_file: ./.env
-    environment:
-      - TZ=Asia/Samarkand
     logging:
       driver: json-file
       options:
@@ -97,9 +93,6 @@ services:
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Samarkand
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     ports:
@@ -120,10 +113,6 @@ services:
       - ./data/plex/profiles:/config/profiles
       - ./data/shared/downloads:/downloads
     env_file: ./.env
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Samarkand
     ports:
       - 32400:32400
       - 1900:1900/udp
@@ -149,11 +138,6 @@ services:
       - ./data/shared/serials:/tv
       - ./data/shared/downloads:/downloads
     env_file: ./.env
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Samarkand
-      - AUTO_UPDATE=false
     ports:
       - 8989:8989
     network_mode: host
@@ -170,11 +154,6 @@ services:
       - ./data/shared/movies:/movies
       - ./data/shared/downloads:/downloads
     env_file: ./.env
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Samarkand
-      - AUTO_UPDATE=false
     ports:
       - 7878:7878
     network_mode: host
@@ -190,11 +169,6 @@ services:
       - ./data/jackett/config:/config
       - ./data/shared/downloads:/downloads
     env_file: ./.env
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Samarkand
-      - AUTO_UPDATE=false
     ports:
       - 9117:9117
     network_mode: host
