@@ -246,6 +246,8 @@ services:
     env_file: ./.env
     environment:
       - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=
+      - TS_USERSPACE=false
     network_mode: host
     restart: unless-stopped
     cap_add:
