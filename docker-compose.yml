@@ -1,22 +1,6 @@
 version: '3.4'
 
 services:
-  mountcheck:
-    container_name: mountcheck-health
-    healthcheck:
-      test: [
-          "CMD-SHELL",
-          '[ -d "/movies" ] || exit 1'
-        ]
-      interval: 1s
-      timeout: 5s
-      retries: 30
-    logging:
-      driver: json-file
-      options:
-        max-size: "10mb"
-        max-file: "1"
-    restart: unless-stopped
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
