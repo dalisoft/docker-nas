@@ -108,8 +108,8 @@ services:
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex-media
-    # devices:
-    # - /dev/dri:/dev/dri
+    devices:
+      - /dev/dri:/dev/dri
     volumes:
       - ./data/plex/config:/config
       - ./data/plex/profiles:/config/profiles
