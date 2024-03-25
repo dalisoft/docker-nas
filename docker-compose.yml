@@ -1,6 +1,22 @@
 version: '3.4'
 
 services:
+  mountcheck:
+    container_name: mountcheck-health
+    healthcheck:
+      test: [
+          "CMD-SHELL",
+          '[ -d "/movies" ] || exit 1'
+        ]
+      interval: 1s
+      timeout: 5s
+      retries: 30
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    restart: unless-stopped
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
@@ -22,6 +38,8 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - mountcheck
   adghome:
     image: adguard/adguardhome:latest
     container_name: adghome
@@ -52,6 +70,8 @@ services:
     networks:
       - nas-connect
     restart: unless-stopped
+    depends_on:
+      - mountcheck
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
@@ -63,6 +83,8 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - mountcheck
   homebridge:
     image: oznu/homebridge:latest
     container_name: homebridge
@@ -84,6 +106,8 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - mountcheck
   torrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -105,6 +129,8 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - mountcheck
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex-media
@@ -131,6 +157,7 @@ services:
     network_mode: host
     restart: unless-stopped
     depends_on:
+      - mountcheck
       - sonarr
       - radarr
   sonarr:
@@ -152,6 +179,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     depends_on:
+      - mountcheck
       - torrent
       - jackett
   radarr:
@@ -173,6 +201,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     depends_on:
+      - mountcheck
       - torrent
       - jackett
   overseerr:
@@ -196,6 +225,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     depends_on:
+      - mountcheck
       - torrent
       - jackett
   tautulli:
@@ -217,6 +247,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     depends_on:
+      - mountcheck
       - torrent
       - jackett
   jackett:
@@ -237,6 +268,8 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - mountcheck
   tailscale:
     image: tailscale/tailscale:latest
     container_name: tailscale-tunnel
@@ -249,6 +282,8 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - mountcheck
   cloud_s3:
     image: zenko/cloudserver:latest
     container_name: cloud_s3-server
@@ -260,6 +295,8 @@ services:
     networks:
       - nas-connect
     restart: unless-stopped
+    depends_on:
+      - mountcheck
 
 networks:
   nas-connect:
