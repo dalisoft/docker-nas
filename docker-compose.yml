@@ -244,9 +244,13 @@ services:
       - /var/lib:/var/lib
       - /dev/net/tun:/dev/net/tun
     env_file: ./.env
-    networks:
-      - nas-connect
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+    network_mode: host
     restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
   cloud_s3:
