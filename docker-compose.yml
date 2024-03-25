@@ -128,11 +128,11 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
       - 32469:32469
-    networks:
-      - nas-connect
+    network_mode: host
     restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - sonarr
+      - radarr
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr-media
@@ -151,6 +151,9 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - torrent
+      - jackett
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr-media
@@ -169,6 +172,9 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - torrent
+      - jackett
   overseerr:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr-media
@@ -189,6 +195,9 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - torrent
+      - jackett
   tautulli:
     image: lscr.io/linuxserver/tautulli:latest
     container_name: tautulli-media
@@ -207,6 +216,9 @@ services:
     restart: unless-stopped
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
+    depends_on:
+      - torrent
+      - jackett
   jackett:
     image: lscr.io/linuxserver/jackett:latest
     container_name: jackett
@@ -251,4 +263,3 @@ services:
 
 networks:
   nas-connect:
-    driver: bridge
