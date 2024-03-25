@@ -89,6 +89,8 @@ services:
     container_name: qbittorrent
     volumes:
       - ./data/qbittorrent/config:/config
+      - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     environment:
@@ -111,6 +113,8 @@ services:
     volumes:
       - ./data/plex/config:/config
       - ./data/plex/profiles:/config/profiles
+      - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     ports:
@@ -136,7 +140,8 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/sonarr/config:/config
-      - ./data/shared/serials:/tv
+      - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     ports:
@@ -154,6 +159,7 @@ services:
     volumes:
       - ./data/radarr/config:/config
       - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     ports:
@@ -171,6 +177,7 @@ services:
     volumes:
       - ./data/overseerr/config:/config
       - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     environment:
@@ -190,6 +197,7 @@ services:
     volumes:
       - ./data/tautulli/config:/config
       - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     ports:
@@ -206,6 +214,8 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/jackett/config:/config
+      - ./data/shared/movies:/movies
+      - ./data/shared/serials:/serials
       - ./data/shared/downloads:/downloads
     env_file: ./.env
     ports:
