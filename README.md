@@ -59,6 +59,10 @@ You can edit `/etc/fstab` file by `sudo nano /etc/fstab`, then **reboot** your d
 
 After reboot, please check with `sudo mount -a`
 
+#### Docker mount wait
+
+- <https://www.reddit.com/r/docker/comments/ke3twe/comment/jxwtzyu>
+
 ## Links
 
 - [AV1 Plex tvOS](https://github.com/currifi/plex_av1_tvos)
