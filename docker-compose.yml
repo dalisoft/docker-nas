@@ -102,7 +102,7 @@ services:
       - jackett
   jackett:
     image: lscr.io/linuxserver/jackett:latest
-    container_name: jackett
+    container_name: jackett-index
     # devices:
     # - /dev/dri:/dev/dri
     volumes:
