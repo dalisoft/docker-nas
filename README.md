@@ -58,6 +58,7 @@ and you can test via command `sudo mount -a`
 - <https://gist.github.com/giordanocardillo/05a89065ff0843c6da116993e8f16913> (SMB Credentials)
 - <https://ubuntu.com/server/docs/how-to-mount-cifs-shares-permanently> (SMB + Mount)
 - <https://askubuntu.com/a/1341879> (SMB/CIFS + Mount permanent mount)
+- <https://askubuntu.com/a/1295943> (`fstab` trick)
 
 Append following line into at end of `/etc/stab`
 
@@ -66,6 +67,17 @@ Append following line into at end of `/etc/stab`
 You can edit `/etc/fstab` file by `sudo nano /etc/fstab`, then **reboot** your device.
 
 After reboot, please check with `sudo mount -a`
+
+#### Docker mount wait
+
+- <https://www.reddit.com/r/docker/comments/ke3twe/comment/jxwtzyu>
+- <https://stackoverflow.com/questions/31746182/docker-compose-wait-for-container-x-before-starting-y>
+- <https://docs.docker.com/reference/compose-file/services/#healthcheck>
+- <https://docs.docker.com/compose/how-tos/startup-order>
+- <https://github.com/openmediavault/openmediavault/issues/458#issuecomment-533892859>
+- <https://askubuntu.com/a/1295943> (`fstab` trick)
+
+##### Solution 1
 
 If that does not work, try doing this step.
 
@@ -83,13 +95,13 @@ and this one too
 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ```
 
-#### Docker mount wait
+##### Solution 2
 
-- <https://www.reddit.com/r/docker/comments/ke3twe/comment/jxwtzyu>
-- <https://stackoverflow.com/questions/31746182/docker-compose-wait-for-container-x-before-starting-y>
-- <https://docs.docker.com/reference/compose-file/services/#healthcheck>
-- <https://docs.docker.com/compose/how-tos/startup-order>
-- <https://github.com/openmediavault/openmediavault/issues/458#issuecomment-533892859>
+Follow [here](https://www.reddit.com/r/selfhosted/comments/pmt7af/comment/hckfzuh)
+
+##### Solution 3
+
+Follow [here](https://askubuntu.com/a/1374584)
 
 ## Links
 
