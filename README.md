@@ -36,20 +36,28 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 
 #### Via `sudo` for once
 
+- <https://askubuntu.com/a/662803> (SMB Credentials)
+- <https://help.ubuntu.com/community/MountWindowsSharesPermanently> (SMB Credentials)
+- <https://gist.github.com/giordanocardillo/05a89065ff0843c6da116993e8f16913> (SMB Credentials)
+- <https://ubuntu.com/server/docs/how-to-mount-cifs-shares-permanently> (SMB + Mount)
 - <https://raspberrypi.stackexchange.com/a/33052>
-- <https://askubuntu.com/a/1227429>
+- <https://askubuntu.com/a/1227429> (CIFS temporarily mount)
 
 ```sh
-sudo mount.cifs //192.168.100.32/Media /home/pi/Desktop/docker-nas/data/shared -o rw,user=dalisoft,password=0000,nounix,sec=ntlmssp,file_mode=0777,dir_mode=0777
+sudo mount.cifs //192.168.100.32/Media /home/pi/Desktop/docker-nas/data/shared -o rw,user=username,password=xyzf,nounix,sec=ntlmssp,file_mode=0777,dir_mode=0777
 # or
-sudo mount.cifs //192.168.100.32/Media /home/pi/Desktop/docker-nas/data/shared -o user=dalisoft,password=0000,uid=1000,gid=1000,vers=3.0,nounix
+sudo mount.cifs //192.168.100.32/Media /home/pi/Desktop/docker-nas/data/shared -o user=username,password=xyzf,uid=1000,gid=1000,vers=3.0,nounix
 ```
 
 and you can test via command `sudo mount -a`
 
 #### Permanent mounting
 
-- <https://askubuntu.com/a/1341879>
+- <https://askubuntu.com/a/662803> (SMB Credentials)
+- <https://help.ubuntu.com/community/MountWindowsSharesPermanently> (SMB Credentials)
+- <https://gist.github.com/giordanocardillo/05a89065ff0843c6da116993e8f16913> (SMB Credentials)
+- <https://ubuntu.com/server/docs/how-to-mount-cifs-shares-permanently> (SMB + Mount)
+- <https://askubuntu.com/a/1341879> (SMB/CIFS + Mount permanent mount)
 
 Append following line into at end of `/etc/stab`
 
@@ -62,7 +70,13 @@ After reboot, please check with `sudo mount -a`
 #### Docker mount wait
 
 - <https://www.reddit.com/r/docker/comments/ke3twe/comment/jxwtzyu>
+- <https://stackoverflow.com/questions/31746182/docker-compose-wait-for-container-x-before-starting-y>
+- <https://docs.docker.com/reference/compose-file/services/#healthcheck>
+- <https://docs.docker.com/compose/how-tos/startup-order>
+- <https://github.com/openmediavault/openmediavault/issues/458#issuecomment-533892859>
 
 ## Links
 
 - [AV1 Plex tvOS](https://github.com/currifi/plex_av1_tvos)
+- [Docker Service Edit](https://unix.stackexchange.com/a/571353/657638)
+- [Mount fix #1](https://github.com/openmediavault/openmediavault/issues/458#issuecomment-533892859)
