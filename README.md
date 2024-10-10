@@ -67,6 +67,22 @@ You can edit `/etc/fstab` file by `sudo nano /etc/fstab`, then **reboot** your d
 
 After reboot, please check with `sudo mount -a`
 
+If that does not work, try doing this step.
+
+Try `sudo nano /etc/systemd/system/multi-user.target.wants/docker.service` (this path for Debian Raspberry) and then
+
+```diff
+-After=network-online.target docker.socket firewalld.service containerd.service time-set.target
++After=network-online.target docker.socket firewalld.service containerd.service time-set.target local-fs.target
+```
+
+and this one too
+
+```diff
++ExecStartPre=/bin/mount -a
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+```
+
 #### Docker mount wait
 
 - <https://www.reddit.com/r/docker/comments/ke3twe/comment/jxwtzyu>
