@@ -79,7 +79,7 @@ Try `sudo nano /etc/systemd/system/multi-user.target.wants/docker.service` (this
 and this one too
 
 ```diff
-+ExecStartPre=/bin/mount -a
++ExecStartPre=/bin/sudo mount -a
 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ```
 
