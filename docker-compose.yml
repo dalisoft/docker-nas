@@ -16,9 +16,9 @@ services:
     environment:
       - DISABLE_IPV6=true
     ports:
-      - "80:80"
-      - "81:81"
-      - "443:443"
+      - 80:80 # HTTP Expose
+      - 81:81 # NPM GUI
+      - 443:443 # HTTPS Expose
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "/usr/bin/check-health"]
@@ -43,9 +43,9 @@ services:
       - TORRENTING_PORT=6881
     # network_mode: host
     ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
+      - 8080:8080 # WebUI Port
+      - 6881:6881 # Torrent
+      - 6881:6881/udp # Torrent UDP
     restart: unless-stopped
   plex:
     image: lscr.io/linuxserver/plex:latest
@@ -66,7 +66,7 @@ services:
     env_file: ./.env
     # network_mode: host
     ports:
-      - 32400:32400
+      - 32400:32400 # Web UI
       - 1900:1900/udp
       - 3005:3005
       # - 5353:5353/udp
@@ -98,7 +98,7 @@ services:
     env_file: ./.env
     # network_mode: host
     ports:
-      - 8989:8989
+      - 8989:8989 # Web UI
     restart: unless-stopped
     depends_on:
       - torrent
@@ -121,7 +121,7 @@ services:
     env_file: ./.env
     # network_mode: host
     ports:
-      - 7878:7878
+      - 7878:7878 # Web UI
     restart: unless-stopped
     depends_on:
       - torrent
@@ -146,7 +146,7 @@ services:
       - PORT=5055
     # network_mode: host
     ports:
-      - 5055:5055
+      - 5055:5055 # Web UI
     restart: unless-stopped
     depends_on:
       - torrent
@@ -169,7 +169,7 @@ services:
     env_file: ./.env
     # network_mode: host
     ports:
-      - 8181:8181
+      - 8181:8181 # Web UI
     restart: unless-stopped
     depends_on:
       - torrent
@@ -192,7 +192,7 @@ services:
     env_file: ./.env
     # network_mode: host
     ports:
-      - 9117:9117
+      - 9117:9117 # Web UI
     restart: unless-stopped
 
 networks:
