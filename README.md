@@ -16,8 +16,8 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 | [Sonarr](https://sonarr.tv)                                                     | +   | +    | +     | +     |
 | [Radarr](https://radarr.video)                                                  | +   | +    | +     | +     |
 | [Overseerr](https://overseerr.dev)                                              | +   | +    | +     | +     |
-| [Jackett](https://github.com/Jackett/Jackett)                                   | +   | +    | +     | +     |
 | [TAUTULLI](https://tautulli.com)                                                | +   | +    | +     | +     |
+| [Jackett](https://github.com/Jackett/Jackett)                                   | +   | +    | +     | +     |
 | [Portainer CE](https://portainer.io)                                            | +   | +    | +     | -     |
 | [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)                      | +   | +    | +     | -     |
 | [OpenSpeedTest](https://openspeedtest.com)                                      | +   | +    | +     | -     |
