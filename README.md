@@ -71,6 +71,29 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 - Prepare `.env` by example of `.env.example`
 - Run `docker-compose up -d`
 
+Running commands:
+
+- `docker-compose up -d` - Light/Base
+- `docker-compose -f docker-compose.yml -f docker-compose.power.yml up -d` - Power
+
+## Environment variables
+
+Additional environment variables can be configured based on services used at compose files.
+The below environment variables just for basic working.
+
+| Name              | Value                     | Service   | Required |
+| ----------------- | ------------------------- | --------- | -------- |
+| `PLEX_CLAIM`      | Plex Token                | Plex      | +        |
+| `TS_AUTHKEY`      | Tailscale Auth Key        | Tailscale | +        |
+| `ENABLE_AVAHI`    | `1` or empty              | Discovery | -        |
+| `PUID`            | `1000`                    | All       | \*arr    |
+| `PGID`            | `1000`                    | All       | \*arr    |
+| `TZ`              | Your timezone             | All       | -        |
+| `AUTO_UPDATE`     | `false`                   | All       | +        |
+| `BASE_URL`        | `http://WEBUI_FRONT:PORT` | Searxng   | -        |
+| `OLLAMA_BASE_URL` | Your Ollama URL           | OpenWebUI | +        |
+| `OPENAI_API_KEY`  | OpenAPI Key               | OpenWebUI | +        |
+
 ## Setup
 
 > Most of setup configurations for Raspberry Pi
