@@ -83,22 +83,22 @@ Running commands:
 Additional environment variables can be configured based on services used at compose files.
 The below environment variables just for basic working.
 
-| Name                  | Value                                  | Service    | Required |
-| --------------------- | -------------------------------------- | ---------- | -------- |
-| `PLEX_CLAIM`          | Plex Token                             | Plex       | +        |
-| `TS_AUTHKEY`          | Tailscale Auth Key                     | Tailscale  | +        |
-| `ENABLE_AVAHI`        | `1` or empty                           | Discovery  | -        |
-| `PUID`                | `1000`                                 | All        | \*arr    |
-| `PGID`                | `1000`                                 | All        | \*arr    |
-| `TZ`                  | Your timezone                          | All        | -        |
-| `AUTO_UPDATE`         | `false`                                | All        | +        |
-| `BASE_URL`            | `http://WEBUI_FRONT:PORT`              | Searxng    | -        |
-| `OLLAMA_BASE_URL`     | Your Ollama URL                        | OpenWebUI  | +        |
-| `OPENAI_API_KEY`      | OpenAPI Key                            | OpenWebUI  | +        |
-| `LLM_MODEL`           | `anthropic/claude-3-5-sonnet-20241022` | OpenHands  | +        |
-| `LLM_API_KEY`         | API Key for `LLM_MODEL`                | OpenHands  | +        |
-| `NEXT_PUBLIC_API_URL` | `http://127.0.0.1:3601/api`            | Perplexica | +        |
-| `NEXT_PUBLIC_WS_URL`  | `ws://127.0.0.1:3601`                  | Perplexica | +        |
+| Name                  | Value                          | Service    | Required |
+| --------------------- | ------------------------------ | ---------- | -------- |
+| `PLEX_CLAIM`          | Plex Token                     | Plex       | +        |
+| `TS_AUTHKEY`          | Tailscale Auth Key             | Tailscale  | +        |
+| `ENABLE_AVAHI`        | `1` or empty                   | Discovery  | -        |
+| `PUID`                | `1000`                         | All        | \*arr    |
+| `PGID`                | `1000`                         | All        | \*arr    |
+| `TZ`                  | Your timezone                  | All        | -        |
+| `AUTO_UPDATE`         | `false`                        | All        | +        |
+| `BASE_URL`            | `http://WEBUI_FRONT:PORT`      | Searxng    | -        |
+| `OLLAMA_BASE_URL`     | Your Ollama URL                | OpenWebUI  | +        |
+| `OPENAI_API_KEY`      | OpenAPI Key                    | OpenWebUI  | +        |
+| `LLM_MODEL`           | Model name, see OpenHands docs | OpenHands  | +        |
+| `LLM_API_KEY`         | API Key for `LLM_MODEL`        | OpenHands  | +        |
+| `NEXT_PUBLIC_API_URL` | `http://127.0.0.1:3601/api`    | Perplexica | -        |
+| `NEXT_PUBLIC_WS_URL`  | `ws://127.0.0.1:3601`          | Perplexica | -        |
 
 ## Setup
 
