@@ -8,31 +8,31 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 
 ## Services included
 
-| Service                                                                         | Pro | Full | Power | Light |
-| ------------------------------------------------------------------------------- | --- | ---- | ----- | ----- |
-| [nginx-proxy-manager](https://github.com/NginxProxyManager/nginx-proxy-manager) | +   | +    | +     | +     |
-| [qBittorrent](https://www.qbittorrent.org)                                      | +   | +    | +     | +     |
-| [Plex](https://www.plex.tv)                                                     | +   | +    | +     | +     |
-| [Sonarr](https://sonarr.tv)                                                     | +   | +    | +     | +     |
-| [Radarr](https://radarr.video)                                                  | +   | +    | +     | +     |
-| [Overseerr](https://overseerr.dev)                                              | +   | +    | +     | +     |
-| [TAUTULLI](https://tautulli.com)                                                | +   | +    | +     | +     |
-| [Jackett](https://github.com/Jackett/Jackett)                                   | +   | +    | +     | +     |
-| [Portainer CE](https://portainer.io)                                            | +   | +    | +     | -     |
-| [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)                      | +   | +    | +     | -     |
-| [OpenSpeedTest](https://openspeedtest.com)                                      | +   | +    | +     | -     |
-| [Homebridge](https://homebridge.io)                                             | +   | +    | +     | -     |
-| [Tailscale](https://tailscale.com)                                              | +   | +    | +     | -     |
-| [Watchtower](https://github.com/containrrr/watchtower)                          | +   | +    | +     | -     |
-| [Zenko CloudServer](https://github.com/scality/cloudserver)                     | +   | +    |       | -     |
-| [RSSHub](https://github.com/DIYgod/RSSHub)                                      | +   | +    | -     | -     |
-| [huginn](https://github.com/huginn/huginn)                                      | +   | +    | -     | -     |
-| [Searxng](https://github.com/searxng/searxng)                                   | +   | +    | -     |       |
-| [OpenWebUI](https://github.com/open-webui/open-webui)                           | +   | +    | -     | -     |
-| [OpenHands](https://github.com/All-Hands-AI/OpenHands)                          | +   | -    | -     | -     |
-| [Perplexica](https://github.com/ItzCrazyKns/Perplexica)                         | +   | -    | -     | -     |
-| [Bolt](https://github.com/stackblitz-labs/bolt.diy)                             | +   | -    | -     | -     |
-| [Webcrumbs](https://github.com/webcrumbs-community/webcrumbs)                   | +   | -    | -     | -     |
+| Service                                                                         | Pro | Full | Power | Light | Ports                                          |
+| ------------------------------------------------------------------------------- | --- | ---- | ----- | ----- | ---------------------------------------------- |
+| [nginx-proxy-manager](https://github.com/NginxProxyManager/nginx-proxy-manager) | +   | +    | +     | +     | 80, 81, 443                                    |
+| [qBittorrent](https://www.qbittorrent.org)                                      | +   | +    | +     | +     | 8080, 6881                                     |
+| [Plex](https://www.plex.tv)                                                     | +   | +    | +     | +     | 32400, 1900, 3005, 8324, 3241{0,4}, 32468      |
+| [Sonarr](https://sonarr.tv)                                                     | +   | +    | +     | +     | 8989                                           |
+| [Radarr](https://radarr.video)                                                  | +   | +    | +     | +     | 7878                                           |
+| [Overseerr](https://overseerr.dev)                                              | +   | +    | +     | +     | 5055                                           |
+| [TAUTULLI](https://tautulli.com)                                                | +   | +    | +     | +     | 8181                                           |
+| [Jackett](https://github.com/Jackett/Jackett)                                   | +   | +    | +     | +     | 9117                                           |
+| [Portainer CE](https://portainer.io)                                            | +   | +    | +     | -     | 8000, 9000, 9443                               |
+| [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)                      | +   | +    | +     | -     | 53, 67, 3000, 3580, 3583, 853, 784, 8853, 5443 |
+| [OpenSpeedTest](https://openspeedtest.com)                                      | +   | +    | +     | -     | 8100                                           |
+| [Homebridge](https://homebridge.io)                                             | +   | +    | +     | -     | 8581, 5353                                     |
+| [Tailscale](https://tailscale.com)                                              | +   | +    | +     | -     | -                                              |
+| [Watchtower](https://github.com/containrrr/watchtower)                          | +   | +    | +     | -     | -                                              |
+| [Zenko CloudServer](https://github.com/scality/cloudserver)                     | +   | +    |       | -     | 8001                                           |
+| [RSSHub](https://github.com/DIYgod/RSSHub)                                      | +   | +    | -     | -     | 1200                                           |
+| [huginn](https://github.com/huginn/huginn)                                      | +   | +    | -     | -     | 3200                                           |
+| [Searxng](https://github.com/searxng/searxng)                                   | +   | +    | -     |       | 8180                                           |
+| [OpenWebUI](https://github.com/open-webui/open-webui)                           | +   | +    | -     | -     | 3300                                           |
+| [OpenHands](https://github.com/All-Hands-AI/OpenHands)                          | +   | -    | -     | -     |                                                |
+| [Perplexica](https://github.com/ItzCrazyKns/Perplexica)                         | +   | -    | -     | -     |                                                |
+| [Bolt](https://github.com/stackblitz-labs/bolt.diy)                             | +   | -    | -     | -     |                                                |
+| [Webcrumbs](https://github.com/webcrumbs-community/webcrumbs)                   | +   | -    | -     | -     |                                                |
 
 ### Estimated resources
 
