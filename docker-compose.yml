@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   npm:
-    image: 'docker.io/jc21/nginx-proxy-manager:latest'
+    image: docker.io/jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
     volumes:
       - ./data/npm:/data
@@ -16,9 +16,9 @@ services:
     environment:
       - DISABLE_IPV6=true
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+      - "80:80"
+      - "81:81"
+      - "443:443"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "/usr/bin/check-health"]
