@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  openhands:
+    image: docker.all-hands.dev/all-hands-ai/openhands:latest
+    container_name: openhands-ai-agent
+    pull_policy: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.15-nikolaik
+      - LOG_ALL_EVENTS=true
+    # network_mode: host
+    ports:
+      - 3800:3000
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+networks:
+  default:
+    external: true
+    name: connectme
