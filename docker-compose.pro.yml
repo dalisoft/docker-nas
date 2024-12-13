@@ -24,8 +24,52 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
+  perplexica-backend:
+    image: itzcrazykns1337/perplexica-backend:main
+    container_name: perplexica-backend
+    volumes:
+      - perplexicabackend-dbstore:/home/perplexica/data
+      - perplexicauploads:/home/perplexica/uploads
+      - ./conf/perplexica/config.toml:/home/perplexica/config.toml
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - SEARXNG_API_URL=http://searxng:8080
+    # network_mode: host
+    ports:
+      - 3601:3001
+    restart: unless-stopped
+    depends_on:
+      - searxng
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  perplexica-frontend:
+    image: itzcrazykns1337/perplexica-frontend:main
+    container_name: perplexica-frontend
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - NEXT_PUBLIC_API_URL=http://127.0.0.1:3601/api
+      - NEXT_PUBLIC_WS_URL=ws://127.0.0.1:3601
+    ports:
+      - 3600:3000
+    restart: unless-stopped
+    depends_on:
+      - perplexica-backend
 
 networks:
   default:
     external: true
     name: connectme
+
+volumes:
+  perplexica-backend-dbstore:
+  perplexica-uploads:
