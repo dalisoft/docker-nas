@@ -37,9 +37,9 @@ services:
       - 53:53/udp # plain DNS
       - 67:67/udp # DHCP server
       # - 68:68/udp # DHCP server
-      - 80:80/tcp # Admin panel UI
-      - 443:443/tcp # Admin panel UI (SSL)
-      - 443:443/udp # Admin panel UI (SSL)
+      - 3580:80/tcp # Admin panel UI
+      - 3583:443/tcp # Admin panel UI (SSL)
+      - 3583:443/udp # Admin panel UI (SSL)
       - 3000:3000/tcp # Admin panel UI (SSL) OR DNS-over-HTTPS server
       - 853:853/tcp # DNS-over-TLS server
       - 784:784/udp # DNS-over-QUIC server
