@@ -23,6 +23,7 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 | [OpenSpeedTest](https://openspeedtest.com)                                      | +   | +    | +     | -     |
 | [Homebridge](https://homebridge.io)                                             | +   | +    | +     | -     |
 | [Tailscale](https://tailscale.com)                                              | +   | +    | +     | -     |
+| [Watchtower](https://github.com/containrrr/watchtower)                          | +   | +    | +     | -     |
 | [Zenko CloudServer](https://github.com/scality/cloudserver)                     | +   | +    |       | -     |
 | [RSSHub](https://github.com/DIYgod/RSSHub)                                      | +   | +    | -     | -     |
 | [huginn](https://github.com/huginn/huginn)                                      | +   | +    | -     | -     |
