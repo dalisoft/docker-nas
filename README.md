@@ -75,7 +75,8 @@ Running commands:
 
 - `docker-compose up -d` - Light/Base
 - `docker-compose -f docker-compose.yml -f docker-compose.power.yml up -d` - Power
-- `docker-compose -f docker-compose.yml -f docker-compose.power.yml -f docker-compose.pro.yml  up -d` - Pro
+- `docker-compose -f docker-compose.yml -f docker-compose.power.yml -f docker-compose.full.yml up -d` - Full
+- `docker-compose -f docker-compose.yml -f docker-compose.power.yml -f docker-compose.full.yml -f docker-compose.pro.yml up -d` - Pro
 
 ## Environment variables
 
@@ -96,7 +97,6 @@ The below environment variables just for basic working.
 | `OPENAI_API_KEY`  | OpenAPI Key                            | OpenWebUI | +        |
 | `LLM_MODEL`       | `anthropic/claude-3-5-sonnet-20241022` | OpenHands | +        |
 | `LLM_API_KEY`     | API Key for `LLM_MODEL`                | OpenHands | +        |
-| `WORKSPACE_BASE`  | Path to your project                   | OpenHands | -        |
 
 ## Setup
 
