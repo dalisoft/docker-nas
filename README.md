@@ -75,6 +75,7 @@ Running commands:
 
 - `docker-compose up -d` - Light/Base
 - `docker-compose -f docker-compose.yml -f docker-compose.power.yml up -d` - Power
+- `docker-compose -f docker-compose.yml -f docker-compose.power.yml -f docker-compose.pro.yml  up -d` - Pro
 
 ## Environment variables
 
