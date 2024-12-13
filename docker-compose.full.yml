@@ -1,0 +1,131 @@
+version: "3.8"
+
+services:
+  cloud_s3:
+    image: zenko/cloudserver:latest
+    container_name: cloud_s3-server
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - REMOTE_MANAGEMENT_DISABLE=1
+    # network_mode: host
+    ports:
+      - 8001:8000
+    restart: unless-stopped
+  rsshub:
+    image: diygod/rsshub
+    container_name: rsshub
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      NODE_ENV: production
+      CACHE_TYPE: redis
+      REDIS_URL: "redis://rsshub_redis:6379/"
+      PUPPETEER_WS_ENDPOINT: "ws://rsshub_browserless:3000"
+    # network_mode: host
+    ports:
+      - 1200:1200
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1200/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - rsshub_redis
+      - rsshub_browserless
+  rsshub_browserless:
+    image: browserless/chrome:latest
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    ulimits:
+      core:
+        hard: 0
+        soft: 0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/pressure"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  rsshub_redis:
+    image: redis:alpine
+    volumes:
+      - rsshub_redis-data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+  huginn:
+    image: ghcr.io/huginn/huginn:latest
+    container_name: huginn-agent
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    # network_mode: host
+    ports:
+      - 3200:3000
+    restart: unless-stopped
+  searxng:
+    image: searxng/searxng:latest
+    container_name: websearch-searxng
+    volumes:
+      - ./data/searxng:/etc/searxng
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - INSTANCE_NAME=ai_search
+      # - BASE_URL=http://localhost:$PORT/
+    # network_mode: host
+    ports:
+      - 8180:8080
+    restart: unless-stopped
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openweb-ai-ui
+    volumes:
+      - ./data/openwebui:/app/backend/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    # network_mode: host
+    ports:
+      - 3300:8080
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: connectme
+
+volumes:
+  rsshub_redis-data:
