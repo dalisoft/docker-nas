@@ -32,7 +32,7 @@ services:
       PUPPETEER_WS_ENDPOINT: "ws://rsshub_browserless:3000"
     # network_mode: host
     ports:
-      - 1200:1200
+      - 1200:1200 # Web UI
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:1200/healthz"]
@@ -86,7 +86,7 @@ services:
     env_file: ./.env
     # network_mode: host
     ports:
-      - 3200:3000
+      - 3200:3000 # Web UI
     restart: unless-stopped
   searxng:
     image: searxng/searxng:latest
@@ -104,7 +104,7 @@ services:
       # - BASE_URL=http://localhost:$PORT/
     # network_mode: host
     ports:
-      - 8180:8080
+      - 8180:8080 # Web UI
     restart: unless-stopped
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
