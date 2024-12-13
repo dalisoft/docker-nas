@@ -11,7 +11,6 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 | Service                                                                         | Pro | Full | Power | Light |
 | ------------------------------------------------------------------------------- | --- | ---- | ----- | ----- |
 | [nginx-proxy-manager](https://github.com/NginxProxyManager/nginx-proxy-manager) | +   | +    | +     | +     |
-| [Portainer CE](https://portainer.io)                                            | +   | +    | +     | -     |
 | [qBittorrent](https://www.qbittorrent.org)                                      | +   | +    | +     | +     |
 | [Plex](https://www.plex.tv)                                                     | +   | +    | +     | +     |
 | [Sonarr](https://sonarr.tv)                                                     | +   | +    | +     | +     |
@@ -19,6 +18,7 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 | [Overseerr](https://overseerr.dev)                                              | +   | +    | +     | +     |
 | [Jackett](https://github.com/Jackett/Jackett)                                   | +   | +    | +     | +     |
 | [TAUTULLI](https://tautulli.com)                                                | +   | +    | +     | +     |
+| [Portainer CE](https://portainer.io)                                            | +   | +    | +     | -     |
 | [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)                      | +   | +    | +     | -     |
 | [OpenSpeedTest](https://openspeedtest.com)                                      | +   | +    | +     | -     |
 | [Homebridge](https://homebridge.io)                                             | +   | +    | +     | -     |
