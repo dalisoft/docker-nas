@@ -1,0 +1,7 @@
+{
+  "prettier.requireConfig": false,
+  "prettier.enable": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
