@@ -28,8 +28,8 @@ services:
     image: itzcrazykns1337/perplexica-backend:main
     container_name: perplexica-backend
     volumes:
-      - perplexicabackend-dbstore:/home/perplexica/data
-      - perplexicauploads:/home/perplexica/uploads
+      - perplexica-backend-dbstore:/home/perplexica/data
+      - perplexica-uploads:/home/perplexica/uploads
       - ./conf/perplexica/config.toml:/home/perplexica/config.toml
     logging:
       driver: json-file
