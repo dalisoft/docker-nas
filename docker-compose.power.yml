@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/portainer:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    # network_mode: host
+    ports:
+      - 8000:8000 # Reverse-tunneling
+      - 9000:9000 # Portainer UI
+      - 9443:9443 # Portainer UI (SSL)
+    restart: unless-stopped
+  adghome:
+    image: adguard/adguardhome:latest
+    container_name: adghome
+    volumes:
+      - ./data/adghome/workdir:/opt/adguardhome/work
+      - ./data/adghome/confdir:/opt/adguardhome/conf
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    # network_mode: host
+    ports:
+      - 53:53/tcp # plain DNS
+      - 53:53/udp # plain DNS
+      - 67:67/udp # DHCP server
+      # - 68:68/udp # DHCP server
+      - 80:80/tcp # Admin panel UI
+      - 443:443/tcp # Admin panel UI (SSL)
+      - 443:443/udp # Admin panel UI (SSL)
+      - 3000:3000/tcp # Admin panel UI (SSL) OR DNS-over-HTTPS server
+      - 853:853/tcp # DNS-over-TLS server
+      - 784:784/udp # DNS-over-QUIC server
+      - 853:853/udp # DNS-over-QUIC server
+      - 8853:8853/udp # DNS-over-QUIC server
+      - 5443:5443/tcp # DNSCrypt server
+      - 5443:5443/udp # DNSCrypt server
+    restart: unless-stopped
+  speedtest:
+    image: openspeedtest/latest:latest
+    container_name: openspeedtest
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    # network_mode: host
+    ports:
+      - 8100:8100 # UI to access
+    restart: unless-stopped
+  homebridge:
+    image: oznu/homebridge:latest
+    container_name: homebridge
+    volumes:
+      - ./data/homebridge:/homebridge
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    # network_mode: host
+    ports:
+      - 8581:8581 # Homebridge UI
+      - 5353:5353/udp # mDNS lookup
+    restart: unless-stopped
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale-tunnel
+    volumes:
+      - /var/lib:/var/lib
+      - /dev/net/tun:/dev/net/tun
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    env_file: ./.env
+    environment:
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=
+      - TS_USERSPACE=false
+    # network_mode: host
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
+    # network_mode: host
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: connectme
