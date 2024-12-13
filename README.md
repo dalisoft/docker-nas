@@ -29,7 +29,7 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 | [huginn](https://github.com/huginn/huginn)                                      | +   | +    | -     | -     | 3200                                           |
 | [Searxng](https://github.com/searxng/searxng)                                   | +   | +    | -     |       | 8180                                           |
 | [OpenWebUI](https://github.com/open-webui/open-webui)                           | +   | +    | -     | -     | 3300                                           |
-| [OpenHands](https://github.com/All-Hands-AI/OpenHands)                          | +   | -    | -     | -     |                                                |
+| [OpenHands](https://github.com/All-Hands-AI/OpenHands)                          | +   | -    | -     | -     | 3800                                           |
 | [Perplexica](https://github.com/ItzCrazyKns/Perplexica)                         | +   | -    | -     | -     |                                                |
 | [Bolt](https://github.com/stackblitz-labs/bolt.diy)                             | +   | -    | -     | -     |                                                |
 | [Webcrumbs](https://github.com/webcrumbs-community/webcrumbs)                   | +   | -    | -     | -     |                                                |
@@ -82,18 +82,21 @@ Running commands:
 Additional environment variables can be configured based on services used at compose files.
 The below environment variables just for basic working.
 
-| Name              | Value                     | Service   | Required |
-| ----------------- | ------------------------- | --------- | -------- |
-| `PLEX_CLAIM`      | Plex Token                | Plex      | +        |
-| `TS_AUTHKEY`      | Tailscale Auth Key        | Tailscale | +        |
-| `ENABLE_AVAHI`    | `1` or empty              | Discovery | -        |
-| `PUID`            | `1000`                    | All       | \*arr    |
-| `PGID`            | `1000`                    | All       | \*arr    |
-| `TZ`              | Your timezone             | All       | -        |
-| `AUTO_UPDATE`     | `false`                   | All       | +        |
-| `BASE_URL`        | `http://WEBUI_FRONT:PORT` | Searxng   | -        |
-| `OLLAMA_BASE_URL` | Your Ollama URL           | OpenWebUI | +        |
-| `OPENAI_API_KEY`  | OpenAPI Key               | OpenWebUI | +        |
+| Name              | Value                                  | Service   | Required |
+| ----------------- | -------------------------------------- | --------- | -------- |
+| `PLEX_CLAIM`      | Plex Token                             | Plex      | +        |
+| `TS_AUTHKEY`      | Tailscale Auth Key                     | Tailscale | +        |
+| `ENABLE_AVAHI`    | `1` or empty                           | Discovery | -        |
+| `PUID`            | `1000`                                 | All       | \*arr    |
+| `PGID`            | `1000`                                 | All       | \*arr    |
+| `TZ`              | Your timezone                          | All       | -        |
+| `AUTO_UPDATE`     | `false`                                | All       | +        |
+| `BASE_URL`        | `http://WEBUI_FRONT:PORT`              | Searxng   | -        |
+| `OLLAMA_BASE_URL` | Your Ollama URL                        | OpenWebUI | +        |
+| `OPENAI_API_KEY`  | OpenAPI Key                            | OpenWebUI | +        |
+| `LLM_MODEL`       | `anthropic/claude-3-5-sonnet-20241022` | OpenHands | +        |
+| `LLM_API_KEY`     | API Key for `LLM_MODEL`                | OpenHands | +        |
+| `WORKSPACE_BASE`  | Path to your project                   | OpenHands | -        |
 
 ## Setup
 
