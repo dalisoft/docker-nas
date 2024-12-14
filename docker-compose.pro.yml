@@ -68,7 +68,7 @@ services:
 networks:
   default:
     external: true
-    name: connectme
+    name: nas
 
 volumes:
   perplexica-backend-dbstore:

@@ -125,7 +125,7 @@ services:
 networks:
   default:
     external: true
-    name: connectme
+    name: nas
 
 volumes:
   rsshub_redis-data:
