@@ -69,7 +69,8 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 
 - Install docker and docker-compose
 - Prepare `.env` by example of `.env.example`
-- Run `docker-compose up -d`
+- Run `docker network create nas`
+- Follow one of below command
 
 Running commands:
 
