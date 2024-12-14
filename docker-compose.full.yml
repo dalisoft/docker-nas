@@ -121,6 +121,8 @@ services:
     ports:
       - 3300:8080
     restart: unless-stopped
+    depends_on:
+      - searxng
 
 networks:
   default:
