@@ -29,7 +29,7 @@ services:
     container_name: qbittorrent
     volumes:
       - ./data/qbittorrent/config:/config
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
@@ -53,7 +53,7 @@ services:
     volumes:
       - ./data/plex/config:/config
       - ./data/plex/profiles:/config/profiles
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
@@ -83,7 +83,7 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/sonarr/config:/config
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
@@ -104,7 +104,7 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/radarr/config:/config
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
@@ -125,7 +125,7 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/overseerr/config:/config
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
@@ -148,7 +148,7 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/tautulli/config:/config
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
@@ -169,7 +169,7 @@ services:
     # - /dev/dri:/dev/dri
     volumes:
       - ./data/jackett/config:/config
-      - /mnt/d/Media:/mnt/media
+      - "D:\\Media:/mnt/media"
     logging:
       driver: json-file
       options:
