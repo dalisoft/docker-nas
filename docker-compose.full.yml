@@ -93,6 +93,7 @@ services:
     container_name: websearch-searxng
     volumes:
       - ./data/searxng:/etc/searxng
+      - ./conf/searxng/settings.yml:/etc/searxng/settings.yml
     logging:
       driver: json-file
       options:

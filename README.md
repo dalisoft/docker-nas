@@ -100,6 +100,7 @@ The below environment variables just for basic working.
 | `LLM_API_KEY`         | API Key for `LLM_MODEL`        | OpenHands  | +        |
 | `NEXT_PUBLIC_API_URL` | `http://127.0.0.1:3601/api`    | Perplexica | -        |
 | `NEXT_PUBLIC_WS_URL`  | `ws://127.0.0.1:3601`          | Perplexica | -        |
+| `SEARXNG_SECRET`      | Secret token                   | Searxng    | +        |
 
 ## Setup
 
