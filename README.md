@@ -24,10 +24,10 @@ Docker compose file which runs all of my apps which running at my NAS for daily 
 | [Homebridge](https://homebridge.io)                                             | +   | +    | +     | -     | 8581, 5353                                     |
 | [Tailscale](https://tailscale.com)                                              | +   | +    | +     | -     | -                                              |
 | [Watchtower](https://github.com/containrrr/watchtower)                          | +   | +    | +     | -     | -                                              |
-| [Zenko CloudServer](https://github.com/scality/cloudserver)                     | +   | +    |       | -     | 8001                                           |
+| [Zenko CloudServer](https://github.com/scality/cloudserver)                     | +   | +    | -     | -     | 8001                                           |
 | [RSSHub](https://github.com/DIYgod/RSSHub)                                      | +   | +    | -     | -     | 1200                                           |
 | [huginn](https://github.com/huginn/huginn)                                      | +   | +    | -     | -     | 3200                                           |
-| [Searxng](https://github.com/searxng/searxng)                                   | +   | +    | -     |       | 8180                                           |
+| [Searxng](https://github.com/searxng/searxng)                                   | +   | +    | -     | -     | 8180                                           |
 | [OpenWebUI](https://github.com/open-webui/open-webui)                           | +   | +    | -     | -     | 3300                                           |
 | [OpenHands](https://github.com/All-Hands-AI/OpenHands)                          | +   | -    | -     | -     | 3800                                           |
 | [Perplexica](https://github.com/ItzCrazyKns/Perplexica)                         | +   | -    | -     | -     | 3600, 3601                                     |
