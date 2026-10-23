@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   portainer:
     image: portainer/portainer-ce:latest
@@ -48,8 +46,6 @@ services:
       - 5443:5443/tcp # DNSCrypt server
       - 5443:5443/udp # DNSCrypt server
     restart: unless-stopped
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=1
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
