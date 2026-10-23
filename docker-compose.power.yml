@@ -21,6 +21,7 @@ services:
     image: adguard/adguardhome:beta
     container_name: adghome
     volumes:
+      - /etc/dhcpcd.conf:/etc/dhcpcd.conf:ro
       - ./data/adghome/workdir:/opt/adguardhome/work
       - ./data/adghome/confdir:/opt/adguardhome/conf
     logging:
