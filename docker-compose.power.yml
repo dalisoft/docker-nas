@@ -48,6 +48,8 @@ services:
       - 5443:5443/tcp # DNSCrypt server
       - 5443:5443/udp # DNSCrypt server
     restart: unless-stopped
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
@@ -116,3 +118,5 @@ networks:
   default:
     external: true
     name: nas
+    enable_ipv4: true
+    enable_ipv6: false

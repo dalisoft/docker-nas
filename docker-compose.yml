@@ -185,3 +185,5 @@ networks:
   default:
     external: true
     name: nas
+    enable_ipv4: true
+    enable_ipv6: false
