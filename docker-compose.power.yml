@@ -18,7 +18,7 @@ services:
       - 9443:9443 # Portainer UI (SSL)
     restart: unless-stopped
   adghome:
-    image: adguard/adguardhome:beta
+    image: adguard/adguardhome:latest
     container_name: adghome
     volumes:
       - /etc/dhcpcd.conf:/etc/dhcpcd.conf:ro
